@@ -1,16 +1,19 @@
-name: Send Discord Notification
+name: Send Changelog to Discord
 
 on:
   push:
-    branches: [ "main", "master" ] 
+    branches: [ "main", "master" ]
 
 jobs:
   discord-notification:
     runs-on: ubuntu-latest
     steps:
-    - name: Send webhook to Discord
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Send custom message to Discord
       uses: Ilshidur/action-discord@master
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       with:
-        args: 'В репозитории **Aetheria-Core** появились новые изменения! 🚀'
+        args: '🔔 **Обновление в Aetheria RPG Core!**\n\nПоследний коммит:\n```text\n${{ github.event.head_commit.message }}\n```\n👉 Заглядывайте в репозиторий за деталями!'

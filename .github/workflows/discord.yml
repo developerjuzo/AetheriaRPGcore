@@ -1,1 +1,16 @@
+name: Send Discord Notification
 
+on:
+  push:
+    branches: [ "main", "master" ] 
+
+jobs:
+  discord-notification:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send webhook to Discord
+      uses: Ilshidur/action-discord@master
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      with:
+        args: 'В репозитории **Aetheria-Core** появились новые изменения! 🚀'

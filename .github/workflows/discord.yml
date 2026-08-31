@@ -16,4 +16,10 @@ jobs:
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       with:
-        args: '🔔 **Обновление в Aetheria RPG Core!**\n\nПоследний коммит:\n```text\n${{ github.event.head_commit.message }}\n```\n👉 Заглядывайте в репозиторий за деталями!'
+        args: |
+          Update in Aetheria RPG Core!
+          
+          Latest commit:
+          `${{ github.event.head_commit.message }}`
+          
+          Check out the repository for details!
